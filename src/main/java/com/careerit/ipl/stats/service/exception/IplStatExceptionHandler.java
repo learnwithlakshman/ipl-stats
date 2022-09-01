@@ -12,6 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @ControllerAdvice
@@ -24,7 +25,7 @@ public class IplStatExceptionHandler extends ResponseEntityExceptionHandler {
                     .message(ex.getMessage())
                     .httpStatus(HttpStatus.NOT_FOUND)
                     .time(LocalDateTime.now())
-                    .errors(List.of(ex.getClass().getSimpleName()))
+                    .errors(new ArrayList<>())
                     .build();
             return ResponseEntity.ok(obj);
     }
